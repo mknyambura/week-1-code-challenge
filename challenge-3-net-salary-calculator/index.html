@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Net Pay Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <!-- Boostrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css" integrity="sha384-z4tVnCr80ZcL0iufVdGQSUzNvJsKjEtqYZjiQrrYKlpGow+btDHDfQWkFjoaz/Zr" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Magnific Pop up -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
+</head>
+<body>
+    <div class="head">
+        <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <!-- <div class="intro">
+                        <div class="logo">
+                            <a href=""><img src="" alt=""></a>
+                        </div>
+                    </div> -->
+                    <div class="col">
+                        <form id="tax-calculator" class="contact-form">
+                            <div class="form">
+                                <h3>Your Payroll Data</h3>
+                                <!-- <input type="hidden" id="submittedform">
+                                <input type="hidden" id="remote-id">
+                                <input type="hidden" id="form-token"> -->
+    
+                                <div class="inputField">
+                                    <input type="hidden" class="seek required">
+                                    <input type="text" name="month-payroll" id="month-payroll" placeholder="Month Payroll" title="Month Payroll" data-type="text" value="January">
+                                    <!-- <select name="Month" id="month" title="Month">
+                                        <option value="">January</option>
+                                        <option value="">February</option>
+                                        <option value="">March</option>
+                                        <option value="">April</option>
+                                        <option value="">May</option>
+                                        <option value="">June</option>
+                                        <option value="">July</option>
+                                        <option value="">August</option>
+                                        <option value="">September</option>
+                                        <option value="">October</option>
+                                        <option value="">November</option>
+                                        <option value="">December</option>
+                                    </select> -->
+                                </div>
+    
+                                <div class="inputField">
+                                    <input type="hidden" class="seek required">
+                                    <input type="number" name="salary-month" id="salary-month" placeholder="Month Salary" title="Month Salary" data-type="text" value="">
+                                </div>
+    
+                                <div class="inputField">
+                                    <input type="hidden" class="seek">
+                                    <select name="treat-salary-as" id="treat-salary-as" title="treat-salary-as">
+                                        <option value="">Treat Salary As:</option>
+                                        <option value="Basic Pay">Basic Pay</option>
+                                        <option value="Net Pay">Net Pay</option>
+                                    </select>
+                                </div>
+                                <div class="inputField">
+                                    <input type="hidden" class="seek">
+                                    <select name="treat-salary-as" id="treat-salary-as" title="treat-salary-as">
+                                        <option value="">NSSF Rates: </option>
+                                        <option value="Old NSSF Rates">Old NSSF Rates</option>
+                                        <option value="New NSSF Rates" selected>New NSSF Rates</option>
+                                    </select>
+                                </div>
+                                <div class="inputField">
+                                    <label for="">Deduct NHIF
+                                        <input type="hidden" class="seek">
+                                        <input type="checkbox" name="Deduct NHIF" id="deduct-NHIF" title="Deduct NHIF" checked="checked">
+                                    </label>
+                                </div>
+                                <div class="inputField hidden">
+                                    <input type="hidden" class="seek required" name="">
+                                    <input type="hidden" title="action" id="action" value="Calculate">
+                                </div>
+                                <div class="inputField hidden">
+                                    <input type="hidden" class="seek required" name="">
+                                    <input type="hidden" title="category" id="category" value="paye">
+                                </div>
+                                <div class="inputField">
+                                    <input type="button" value="Calculate" class="button alt wb-submit">
+                                </div>
+                                <div style="clear:both"></div>
+                                <div id="response"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-10">
+                <div class="intro">
+                    <p></p>
+                    <h2>PAYE Tax Calculator</h2>
+                    <p>PAYE Rates with effect from <span class="style1">1 January 2021:</span></p>
+                    <table class="data">
+                        <thead>
+                            <tr>
+                                <th>Monthly Taxable Pay (Ksh)</th>
+                                <th>Annual Taxable Pay (Ksh)</th>
+                                <th>Rate of Tax (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Up to 24,000</td>
+                                <td>Up to 288,000</td>
+                                <td>10%</td>
+                            </tr>
+                            <tr>
+                                <td>24,001 - 32,333</td>
+                                <td>288,001 - 388,000</td>
+                                <td>25%</td>
+                            </tr>
+                            <tr>
+                                <td>Above 32,333</td>
+                                <td>Above 388,000</td>
+                                <td>30%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+    
+                    <p></p>
+                    <h3>Other PAYE Parameters</h3>
+                    <table class="data" cellpadding="5" cellspacing="0">
+                        <tr>
+                            <th></th>
+                            <th>Monhtly Limit (Ksh)</th>
+                            <th>&nbsp;</th>
+                            <th>Annual Limit (Ksh)</th>
+                            <th>Effective Since</th>
+                        </tr>
+                        <tr>
+                            <td>Personal Relief</td>
+                            <td>2,400</td>
+                            <td>&nbsp;</td>
+                            <td>28,800</td>
+                            <td>25 April 2020 </td>
+                         </tr>
+                         <tr>
+                            <td>Insurance Relief</td>
+                            <td>5,000</td>
+                            <td>&nbsp;</td>
+                            <td>60,000</td>
+                            <td>1 January 2007</td>
+                         </tr>
+                         <tr>
+                            <td>Allowable Pension Fund Contribution</td>
+                            <td>20,000</td>
+                            <td>&nbsp;</td>
+                            <td>240,000</td>
+                            <td>1 January 2006</td>
+                         </tr>
+                         <tr>
+                           <td>Allowable HOSP Contribution</td>
+                           <td>0</td>
+                           <td>&nbsp;</td>
+                           <td>0</td>
+                           <td>1 January 2021</td>
+                         </tr>
+                         <tr>
+                            <td>Affordable Housing Relief </td>
+                            <td>9,000</td>
+                            <td>&nbsp;</td>
+                            <td>108,000</td>
+                            <td>1 July 2018 </td>
+                         </tr>
+                         <tr>
+                            <td>Allowable Owner Occupier Interest</td>
+                            <td>25,000</td>
+                            <td>&nbsp;</td>
+                            <td>300,000</td>
+                            <td>1 January 2017</td>
+                         </tr>
+                         <tr>
+                            <td>Disability Exemption </td>
+                            <td>150,000</td>
+                            <td>&nbsp;</td>
+                            <td>1,800,000</td>
+                            <td>10 March 2010 </td>
+                         </tr>
+                    </table>
+                    <p></p>
+                    <p>As from <span class="style1">1 January 2022</span> NHIF contributions qualify for insurance relief.</p>
+    
+                    <h2 id="NHIF">NHIF</h2>
+                    <p>NHIF rates in effect from <span class="style1">1 April 2015:</span></p>
+                    <table cellpadding="5" cellspacing="0" class="data">
+                        <tr>
+                            <th>Gross Pay (Ksh)</th>
+                            <th>Deduction (Ksh)</th>
+                            <td>&nbsp;</td>
+                            <th>Gross Pay (Ksh)</th>
+                            <th>Deduction (Ksh)</th>
+                        </tr>
+                        <tr>
+                            <td>Up to  5,999</td>
+                            <td>150</td>
+                            <td>&nbsp;</td>
+                            <td>40,000 - 44,999 </td>
+                            <td>1,000</td>
+                        </tr>
+                        <tr>
+                            <td>6,000 - 7,999</td>
+                            <td>300</td>
+                            <td>&nbsp;</td>
+                            <td>45,000 - 49,999 </td>
+                            <td>1,100</td>
+                        </tr>
+                        <tr>
+                            <td>8,000 - 11,999</td>
+                            <td>400</td>
+                            <td>&nbsp;</td>
+                            <td>50,000 - 59,999 </td>
+                            <td>1,200</td>
+                        </tr>
+                        <tr>
+                            <td>12,000 - 14,999</td>
+                            <td>500</td>
+                            <td>&nbsp;</td>
+                            <td>60,000 - 69,999 </td>
+                            <td>1,300</td>
+                        </tr>
+                        <tr>
+                            <td>15,000 - 19,999</td>
+                            <td>600</td>
+                            <td>&nbsp;</td>
+                            <td>70,000 - 79,999 </td>
+                            <td>1,400</td>
+                        </tr>
+                        <tr>
+                            <td>20,000 - 24,999</td>
+                            <td>750</td>
+                            <td>&nbsp;</td>
+                            <td>80,000 - 89,999 </td>
+                            <td>1,500</td>
+                        </tr>
+                        <tr>
+                            <td>25,000 - 29,999</td>
+                            <td>850</td>
+                            <td>&nbsp;</td>
+                            <td>90,000 - 99,999 </td>
+                            <td>1,600</td>
+                        </tr>
+                        <tr>
+                            <td>30,000 - 34,999</td>
+                            <td>900</td>
+                            <td>&nbsp;</td>
+                            <td> 100,000 and above </td>
+                            <td>1,700</td>
+                        </tr>
+                        <tr>
+                            <td>35,000 - 39,999 </td>
+                            <td>950</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+                    <p></p>
+                    <h2 id="NSSF">NSSF</h2>
+                    <h3>New Rates</h3>
+                    <p>The new NSSF Act came into effect on <span class="style1">10 January 2014</span>. Under this act contributions to NSSF are divided into Tier I and Tier II. Organisations may opt out of Tier II contributions if they  have an alternative pension scheme in place. </p>
+                    <p>The employer and employee  each contribute 6% of pensionable pay to NSSF, subject to the following montly limits: </p>
+                    <table cellpadding="5" cellspacing="0" class="data">
+                        <tr>
+                            <th>Tier</th>
+                            <th>Pensionable Pay </th>
+                        </tr>
+                        <tr>
+                            <td>I </td>
+                            <td>Up to  6,000 </td>
+                        </tr>
+                        <tr>
+                            <td> II </td>
+                            <td>6,001 - 18,000 </td>
+                        </tr>
+                    </table>
+                    <p></p>
+                    <h3>Old Rates </h3>
+                    <p>Under the old NSSF Act, the employee and the employer contributed 5% of gross pay each. The combined employee and employer contribution for each pay period was subject to the following limits:</p>
+                    <table cellpadding="5" cellspacing="0" class="data">
+                        <tr>
+                            <th>Pay<br>
+                            Frequency</th>
+                            <th>Maximum<br>
+                            Contribution<br>
+                            (Ksh)</th>
+                        </tr>
+                        <tr>
+                            <td>Monthly</td>
+                            <td align="right">400</td>
+                        </tr>
+                        <tr>
+                            <td>Biweekly</td>
+                            <td align="right">200</td>
+                        </tr>
+                        <tr>
+                            <td>Weekly</td>
+                            <td align="right">100</td>
+                        </tr>
+                    </table>
+                    <p></p>
+                    <p>Due to ongoing litigation some employers continue to use the old  rates. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        (function() {
+            ('#month-payroll').datetimepicker({
+                defaultDate: "",
+                format: 'MMMM, YYYY'
+            });
+        });
+    </script>
+</body>
+</html>
