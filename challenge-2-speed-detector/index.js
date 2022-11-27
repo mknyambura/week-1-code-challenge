@@ -1,13 +1,16 @@
-function checkspeed(speed) {
-    points = 0;
+function checkspeed() {
+    const speed = document.getElementById('s').value;
+    document.getElementById('s').innerHTML = `Your speed is ${speed}`
+    
+    const points = (speed - 70) / 5;
+    document.getElementById('calc').innerHTML = `Your Points: ${points}`
+    
     if (speed <= 70){
-        console.log('Ok')
-    }else if (speed > 70){
-        points = (speed - 70) / 5;
-        console.log(`Points = ${points}`)
-        if (points >= 12){
-            console.log(`License suspended`)
-        }
+        // window.alert('Ok')
+        document.getElementById('calc').innerHTML = `Ok`
+    }else if (speed > 70 && points >= 12){
+        document.getElementById('credit').innerHTML = `License suspended`;
     }
+       
     
 }
