@@ -1,11 +1,16 @@
 // Let's create a funtion that will categorize the grades based on the subjects' respetive grade and give an output of the grade the student will receive
 
 function Calculate(){
-    let m = document.getElementById('m').value;
-    let e = document.getElementById('e').value;
-    let k = document.getElementById('k').value;
-    let f = document.getElementById('f').value;
-    let c = document.getElementById('c').value;
+    // let m = document.getElementById('m').value;
+    // let e = document.getElementById('e').value;
+    // let k = document.getElementById('k').value;
+    // let f = document.getElementById('f').value;
+    // let c = document.getElementById('c').value;
+    let m = prompt('Enter your Mathematics Grade')
+    let e = prompt('Enter your English Grade')
+    let k = prompt('Enter your Kiswahili Grade')
+    let f = prompt('Enter your French Grade')
+    let c = prompt('Enter your Envrionmental Science Grade')
 
     const total = parseFloat(m) + parseFloat(e) + parseFloat(k) + parseFloat(f) + parseFloat(c);
     document.getElementById("calc").innerHTML = `Your Total Marks is ${total}/500`;
@@ -24,5 +29,6 @@ function Calculate(){
         document.getElementById("grade").innerHTML = `Your Grade is D`;
     }else{
         document.getElementById("grade").innerHTML = `Your Grade is E`;
+        document.getElementById("fail").innerHTML = `Fail`;
     }
 }
