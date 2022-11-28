@@ -72,7 +72,18 @@ function netSalary(){
     const calculate = document.getElementById('button');
     const output1 = document.getElementById('basicPay');
     output1.innerHTML = `Basic Pay: ${salary}`
+
+    const nssfNewRates = 1080;
+    // document.getElementById('NewNSSFRates').value;
+    const nssfOldRates = 400;
+    // document.getElementById('OldNSSFRates').value;
+    if (nssfNewRates){
+        document.getElementById('nssfPay').innerHTML = `NSSF: ${nssfNewRates}`
+    }else if (nssfOldRates) {
+        document.getElementById('nssfPay').innerHTML = `NSSF: ${nssfOldRates}`
+    }
     
+    // const beforetax = 
 
 }
 // calculate.addEventListener('click', netSalary);
