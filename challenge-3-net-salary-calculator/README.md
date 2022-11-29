@@ -1,9 +1,10 @@
 ## Challenge 3: Net Salary Calculator (Toy Problem)
 Author: Mercy Nyambura Kariuki
+30/11/2022
 Copyright (c) 2022 Mercy Nyambura Kariuki
 
-
-<em><h4>Description</h4></em>: Given the basic salary and benefits of an employee, write a program that would calculate the Payee Tax, NHIF, NSSF Deductions and net salary.
+### Description
+Given the basic salary and benefits of an employee, write a program that would calculate the Payee Tax, NHIF, NSSF Deductions and net salary.
 
 NB: Use KRA, NHIF, and NSSF values provided in the link below.
 
@@ -14,3 +15,13 @@ NB: Use KRA, NHIF, and NSSF values provided in the link below.
 - HMTL
 - CSS
 - JavaScript
+
+### Getting Files
+- Fork the repo
+- Clone the repo
+- Install the prerequisites
+- Make appropriate changes in file(s)
+- Run the server to see the changes
+- Add the changes and commit them (git commit -am "Improve App")
+- Push to the branch (git push origin improve-app)
+- Create a Pull request
