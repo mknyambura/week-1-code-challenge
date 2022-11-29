@@ -1,6 +1,9 @@
 ## Challenge 3: Net Salary Calculator (Toy Problem)
+Author: Mercy Nyambura Kariuki
+Copyright (c) 2022 Mercy Nyambura Kariuki
 
-Given the basic salary and benefits of an employee, write a program that would calculate the Payee Tax, NHIF, NSSF Deductions and net salary.
+
+<em><h4>Description</h4></em>: Given the basic salary and benefits of an employee, write a program that would calculate the Payee Tax, NHIF, NSSF Deductions and net salary.
 
 NB: Use KRA, NHIF, and NSSF values provided in the link below.
 
