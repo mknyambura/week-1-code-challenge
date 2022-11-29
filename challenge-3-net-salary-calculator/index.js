@@ -1,20 +1,18 @@
 function netSalary(){
     
     const salary = document.getElementById('salary-month').value;
-    const calculate = document.getElementById('button');
-    const nssf = salary * 0.06;
-    const beforetax = salary - nssf;
+    const calculate = parseInt(document.getElementById('button'));
+    const nssf = parseInt(salary * 0.06);
+    const beforetax = parseInt(salary - nssf);
     const taxableincome0 = 0.1;
     const taxableincome1 = 0.1;
     const taxableincome2 = 0.25;
     const taxableincome3 = 0.3;
     const personalRelief = 2400;
-    const paye0 =  (taxableincome0 * beforetax) - 0;
-    const paye1 =  (taxableincome1 * beforetax) - personalRelief;
-    const paye2 =  (taxableincome2 * beforetax) - personalRelief;
-    const paye3 =  (taxableincome3 * beforetax) - personalRelief;
-    const nhif = 0;
-    const  = 
+    const paye0 =  parseInt((taxableincome0 * beforetax) - 0);
+    const paye1 =  parseInt((taxableincome1 * beforetax) - personalRelief);
+    const paye2 =  parseInt((taxableincome2 * beforetax) - personalRelief);
+    const paye3 =  parseInt((taxableincome3 * beforetax) - personalRelief);
     
 
     const outputBasicPay = document.getElementById('basicPay');
@@ -34,6 +32,8 @@ function netSalary(){
     const outputAfterTax2 = document.getElementById('afterTax');
     const outputAfterTax3 = document.getElementById('afterTax');
     const outputNHIF = document.getElementById('nhifPay');
+    const netsalary = document.getElementById('netSalary');
+
 
     if (salary > 0 && salary && salary < 25589){
         outputRelief.innerHTML = `Personal Relief: 0`;
@@ -57,47 +57,50 @@ function netSalary(){
         outputAfterTax3.innerHTML = `After Tax: ${beforetax - paye3}`;
     }
     
-    function nhifDeduction(input) {
-        if (salary >= 0 && salary <= 5999) {
-          outputNHIF.innerHTML = `NHIF 150`;
-        } else if (salary >= 6000 && input <= 7999) {
-            outputNHIF.innerHTML = `NHIF 300`;
-        } else if (salary >= 8000 && input <= 11999) {
-            outputNHIF.innerHTML = `NHIF 400`;
-        } else if (salary >= 12000 && input <= 14999) {
-            outputNHIF.innerHTML = `NHIF 500`;
-        } else if (input >= 15000 && input <= 19999) {
-          return 600;
-        } else if (input >= 20000 && input <= 24999) {
-          return 750;
-        } else if (input >= 25000 && input <= 29999) {
-          return 850;
-        } else if (input >= 30000 && input <= 34999) {
-          return 900;
-        } else if (input >= 35000 && input <= 39999) {
-          return 950;
-        } else if (input >= 40000 && input <= 44999) {
-          return 1000;
-        } else if (input >= 45000 && input <= 49999) {
-          return 1100;
-        } else if (input >= 50000 && input <= 59999) {
-          return 1200;
-        } else if (input >= 60000 && input <= 69999) {
-          return 1300;
-        } else if (input >= 70000 && input <= 79999) {
-          return 1400;
-        } else if (input >= 80000 && input <= 89999) {
-          return 1500;
-        } else if (input >= 90000 && input <= 99999) {
-          return 1600;
-        } else if (input >= 100000) {
-          return 1700;
-        }
+
+    if (salary >= 0 && salary <= 5999) {
+        outputNHIF.innerHTML = `NHIF 150`;
+    } else if (salary >= 6000 && salary <= 7999) {
+        outputNHIF.innerHTML = `NHIF 300`;
+    } else if (salary >= 8000 && salary <= 11999) {
+        outputNHIF.innerHTML = `NHIF 400`;
+    } else if (salary >= 12000 && salary <= 14999) {
+        outputNHIF.innerHTML = `NHIF 500`;
+    } else if (salary >= 15000 && salary <= 19999) {
+        outputNHIF.innerHTML = `NHIF 600`;
+    } else if (salary >= 20000 && salary <= 24999) {
+        outputNHIF.innerHTML = `NHIF 750`;
+    } else if (salary >= 25000 && salary <= 29999) {
+        outputNHIF.innerHTML = `NHIF 850`;
+    } else if (salary >= 30000 && salary <= 34999) {
+        outputNHIF.innerHTML = `NHIF 900`;
+    } else if (salary >= 35000 && salary <= 39999) {
+        outputNHIF.innerHTML = `NHIF 950`;
+    } else if (salary >= 40000 && salary <= 44999) {
+        outputNHIF.innerHTML = `NHIF 1000`;
+    } else if (salary >= 45000 && salary <= 49999) {
+        outputNHIF.innerHTML = `NHIF 1100`;
+    } else if (salary >= 50000 && salary <= 59999) {
+        outputNHIF.innerHTML = `NHIF 1200`;
+    } else if (salary >= 60000 && salary <= 69999) {
+        outputNHIF.innerHTML = `NHIF 1300`;
+    } else if (salary >= 70000 && salary <= 79999) {
+        outputNHIF.innerHTML = `NHIF 1400`;
+    } else if (salary >= 80000 && salary <= 89999) {
+        outputNHIF.innerHTML = `NHIF 1500`;
+    } else if (salary >= 90000 && salary <= 99999) {
+        outputNHIF.innerHTML = `NHIF 1600`;
+    } else if (salary >= 100000) {
+        outputNHIF.innerHTML = `NHIF 1700`;
     }
+    
     outputBasicPay.innerHTML = `Basic Pay: ${salary}`;
     outputNSSF.innerHTML = `NSSF: ${nssf}`;
     outputBeforeTax.innerHTML = `Before Tax: ${beforetax}`;    
 
+}
+function nhifDeduction() {
+    
 }
 
  
