@@ -80,7 +80,7 @@ function netSalary(){
     document.getElementById('netSalary').innerHTML = `Net Salary: ${netpay}`;
     
 }
-netSalary();
+// netSalary();
 
  
  
