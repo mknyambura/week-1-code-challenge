@@ -1,107 +1,86 @@
 function netSalary(){
+    let salary = parseInt(document.getElementById('salary-month').value);
+    document.getElementById('basicPay').innerHTML = `Basic Salary: ${parseInt(salary)}`;
+
+    let nssf = parseInt(salary * 0.06);
+    document.getElementById('nssfPay').innerHTML = `NSSF: ${nssf}`;
+
+    let beforetax = parseInt(salary - nssf);
+    document.getElementById('beforeTax').innerHTML = `Before Tax: ${beforetax}`
     
-    const salary = document.getElementById('salary-month').value;
-    const calculate = parseInt(document.getElementById('button'));
-    const nssf = parseInt(salary * 0.06);
-    const beforetax = parseInt(salary - nssf);
-    const taxableincome0 = 0.1;
-    const taxableincome1 = 0.1;
-    const taxableincome2 = 0.25;
-    const taxableincome3 = 0.3;
-    const personalRelief = 2400;
-    const paye0 =  parseInt((taxableincome0 * beforetax) - 0);
-    const paye1 =  parseInt((taxableincome1 * beforetax) - personalRelief);
-    const paye2 =  parseInt((taxableincome2 * beforetax) - personalRelief);
-    const paye3 =  parseInt((taxableincome3 * beforetax) - personalRelief);
-    
-
-    const outputBasicPay = document.getElementById('basicPay');
-    const outputNSSF = document.getElementById('nssfPay');
-    const outputBeforeTax = document.getElementById('beforeTax');
-    const taxableIncome0 = document.getElementById('taxAmount');
-    const taxableIncome1 = document.getElementById('taxAmount');
-    const taxableIncome2 = document.getElementById('taxAmount');
-    const taxableIncome3 = document.getElementById('taxAmount');
-    const outputRelief = document.getElementById('personalRelief');
-    const outputPaye0 = document.getElementById('payePay');
-    const outputPaye1 = document.getElementById('payePay');
-    const outputPaye2 = document.getElementById('payePay');
-    const outputPaye3 = document.getElementById('payePay');
-    const outputAfterTax0 = document.getElementById('afterTax');
-    const outputAfterTax1 = document.getElementById('afterTax');
-    const outputAfterTax2 = document.getElementById('afterTax');
-    const outputAfterTax3 = document.getElementById('afterTax');
-    const outputNHIF = document.getElementById('nhifPay');
-    const netsalary = document.getElementById('netSalary');
-
-
-    if (salary > 0 && salary && salary < 25589){
-        outputRelief.innerHTML = `Personal Relief: 0`;
-        taxableIncome0.innerHTML= `Income Tax: ${taxableincome0 * beforetax}`;
-        outputPaye0.innerHTML = `P.A.Y.E: ${paye0}`;
-        outputAfterTax0.innerHTML = `After Tax: ${beforetax - paye0}`;
-    }else if (salary >= 25589 && salary <= 288000) {
-        outputRelief.innerHTML = `Personal Relief: ${personalRelief}`;
-        taxableIncome1.innerHTML= `Income Tax: ${taxableincome1 * beforetax}`;
-        outputPaye1.innerHTML = `P.A.Y.E: ${paye1}`;
-        outputAfterTax1.innerHTML = `After Tax: ${beforetax - paye1}`;
-    }else if (salary > 288000 && salary <= 388000){
-        outputRelief.innerHTML = `Personal Relief: ${personalRelief}`;
-        taxableIncome2.innerHTML= `Income Tax: ${taxableincome2 * beforetax}`;
-        outputPaye2.innerHTML = `P.A.Y.E: ${paye2}`;
-        outputAfterTax2.innerHTML = `After Tax: ${beforetax - paye2}`;
-    }else if (salary > 388000){
-        outputRelief.innerHTML = `Personal Relief: ${personalRelief}`
-        taxableIncome3.innerHTML= `Income Tax: ${taxableincome3 * beforetax}`;
-        outputPaye3.innerHTML = `P.A.Y.E: ${paye3}`;
-        outputAfterTax3.innerHTML = `After Tax: ${beforetax - paye3}`;
+    let tax;
+    if (salary >0 && salary <= 24000) {
+        tax = parseInt(salary * 0.1);
+    }else if (salary > 24000 && salary <= 32333){
+        tax = parseInt(salary * 0.25);
+    }else if (salary > 32333){
+        tax = parseInt(salary * 0.3);
     }
+    document.getElementById('taxAmount').innerHTML = `Income Tax: ${tax}`
     
+   
+    let relief;
+    if (salary > 25589){
+        relief = parseInt(2400);
+    }else if (salary >0 && salary <= 25589) {
+        relief = parseInt(0);
+    }
+    document.getElementById('personalRelief').innerHTML = `Personal Relief: ${relief}`;
+    
+    let paye;
+    if (salary > 25589){
+        paye = tax - relief;
+    }else if (salary >0 && salary <= 25589){
+        paye = tax - 0;
+    }
+    document.getElementById('payePay').innerHTML = `P.A.Y.E: ${paye}`;
 
+    let aftertax = parseInt(beforetax - paye);
+    document.getElementById('afterTax').innerHTML = `Pay After Tax: ${aftertax}`;
+    
+    let nhif;
     if (salary >= 0 && salary <= 5999) {
-        outputNHIF.innerHTML = `NHIF 150`;
+        nhif = parseInt(150);
     } else if (salary >= 6000 && salary <= 7999) {
-        outputNHIF.innerHTML = `NHIF 300`;
+        nhif = parseInt(300);
     } else if (salary >= 8000 && salary <= 11999) {
-        outputNHIF.innerHTML = `NHIF 400`;
+        nhif = parseInt(400);
     } else if (salary >= 12000 && salary <= 14999) {
-        outputNHIF.innerHTML = `NHIF 500`;
+        nhif = parseInt(500);
     } else if (salary >= 15000 && salary <= 19999) {
-        outputNHIF.innerHTML = `NHIF 600`;
+        nhif = parseInt(600);
     } else if (salary >= 20000 && salary <= 24999) {
-        outputNHIF.innerHTML = `NHIF 750`;
+        nhif = parseInt(750);
     } else if (salary >= 25000 && salary <= 29999) {
-        outputNHIF.innerHTML = `NHIF 850`;
+        nhif = parseInt(850);
     } else if (salary >= 30000 && salary <= 34999) {
-        outputNHIF.innerHTML = `NHIF 900`;
+        nhif = parseInt(900);
     } else if (salary >= 35000 && salary <= 39999) {
-        outputNHIF.innerHTML = `NHIF 950`;
+        nhif = parseInt(950);
     } else if (salary >= 40000 && salary <= 44999) {
-        outputNHIF.innerHTML = `NHIF 1000`;
+        nhif = parseInt(1000);
     } else if (salary >= 45000 && salary <= 49999) {
-        outputNHIF.innerHTML = `NHIF 1100`;
+        nhif = parseInt(1100);
     } else if (salary >= 50000 && salary <= 59999) {
-        outputNHIF.innerHTML = `NHIF 1200`;
+        nhif = parseInt(1200);
     } else if (salary >= 60000 && salary <= 69999) {
-        outputNHIF.innerHTML = `NHIF 1300`;
+        nhif = parseInt(1300);
     } else if (salary >= 70000 && salary <= 79999) {
-        outputNHIF.innerHTML = `NHIF 1400`;
+        nhif = parseInt(1400);
     } else if (salary >= 80000 && salary <= 89999) {
-        outputNHIF.innerHTML = `NHIF 1500`;
+        nhif = parseInt(1500);
     } else if (salary >= 90000 && salary <= 99999) {
-        outputNHIF.innerHTML = `NHIF 1600`;
+        nhif = parseInt(1600);
     } else if (salary >= 100000) {
-        outputNHIF.innerHTML = `NHIF 1700`;
+        nhif = parseInt(1700);
     }
-    
-    outputBasicPay.innerHTML = `Basic Pay: ${salary}`;
-    outputNSSF.innerHTML = `NSSF: ${nssf}`;
-    outputBeforeTax.innerHTML = `Before Tax: ${beforetax}`;    
+    document.getElementById('nhifPay').innerHTML = `NHIF ${nhif}`;
 
-}
-function nhifDeduction() {
+    let netpay = parseInt(aftertax - nhif)
+    document.getElementById('netSalary').innerHTML = `Net Salary: ${netpay}`;
     
 }
+netSalary();
 
  
  

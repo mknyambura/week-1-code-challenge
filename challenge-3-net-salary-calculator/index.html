@@ -10,34 +10,34 @@
 </head>
 <body>
     <div class="container">
-        <h2>Net Salary Calculator</h2>
-        <div class="flexbox">
-            <div class="card">
-                <div class="input">
-                    <input type="number" name="salary-month" id="salary-month" placeholder="Enter your salary in Ksh" title="Month Salary" data-type="currency" value="">
-
-                    <button class="button" onclick="netSalary()">Calculate</button>
-                    
-                    <p></p>
-                    <p></p>
-                    <p></p>
-                    <div id="results">
-                        <p id="basicPay"></p>
-                        <p id="nssfPay"></p>
-                        <p id="beforeTax"></p>
-                        <p id="taxAmount"></p>
-                        <p id="personalRelief"></p>
-                        <p id="payePay"></p>
-                        <p id="afterTax"></p>
-                        <p id="nhifPay"></p>
-                        <p id="netSalary"></p>
-                    </div>
-                </div>
+        <h2>Nest Salary Calculator</h2>
+        <form action="" class="flexbox">
+            
+            <div class="input">
+                
+                <input type="number" name="salary-month" id="salary-month" placeholder="Enter your salary in Ksh" title="Month Salary" data-type="currency" value="">
+    
+                <input type="button" value="Calculate" class="button" onclick="netSalary()"></input>
             </div>
-        </div>
+
+            <div id="results">
+                <h4>Results:</h4>
+                <p id="basicPay"></p>
+                <p id="nssfPay"></p>
+                <p id="beforeTax"></p>
+                <p id="taxAmount"></p>
+                <p id="personalRelief"></p>
+                <p id="payePay"></p>
+                <p id="afterTax"></p>
+                <p id="nhifPay"></p>
+                <p id="netSalary"></p>
+                
+            </div>
+        </form>
+    
     </div>
 
-    <div class="col-md-10">
+    <!-- <div class="col-md-10">
         <div class="intro">
             <p></p>
             <h2>PAYE Tax Calculator</h2>
@@ -269,7 +269,7 @@
             <p></p>
             <p>Due to ongoing litigation some employers continue to use the old  rates. </p>
         </div>
-    </div>
+    </div> -->
 
 
     
